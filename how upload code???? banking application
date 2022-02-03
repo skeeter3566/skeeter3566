@@ -1,0 +1,67 @@
+import java.util.*;
+
+public class Main {
+  // initializing balance and previous transactions:
+	private static int balance = 0;
+	private static String previous = "\nno previous transactions";
+	public static void main(String[] args) {
+		options();
+		main2();
+	}
+	public static void main2() {
+		System.out.println("\n\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\nEnter an option.\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+		Scanner console = new Scanner(System.in);
+		String input = console.next();
+        if (input.equals("A")) {
+        	optionA();
+        } else if (input.equals("B")) {
+        	optionB();
+          } else if (input.equals("C")) {
+        	  optionC();
+            } else if (input.equals("D")) {
+        	    optionD();
+              } else if (input.equals("E")) {
+            	  optionE();
+                } else if (input.equals("options")) {
+                	options();
+                	main2();
+                  } else {
+                	  System.out.println("\n !!please enter a valid option!! \n");	
+                  	  main2();
+                    }
+        	        
+        }   	
+	public static void optionA() {   //check balance
+		System.out.println("Your balance is:   $" + balance);
+		main2();
+	}
+	public static void optionB() {   //deposit
+		System.out.print("\n----------------------------------------------\nHow much would you like to deposit?\n----------------------------------------------\n\n$");
+		Scanner console = new Scanner(System.in);
+		int deposit = console.nextInt();
+		balance += deposit;
+		System.out.print("\n----------------------------------------------\nYour new balance is $" + balance + ".\n----------------------------------------------");
+		previous = "\n----------------------------------------------\nYour previous transaction was a deposit of $" + deposit + " to your account.\n----------------------------------------------";
+		main2();
+	}
+	public static void optionC() {   //withdraw
+		System.out.print("\n----------------------------------------------\nHow much would you like to withdrawl?\n----------------------------------------------\n\n$");
+		Scanner console = new Scanner(System.in);
+		int withdrawl =console.nextInt();
+		balance -= withdrawl;
+		System.out.print("\n----------------------------------------------\nYour new balance is $" + balance + ".\n----------------------------------------------");
+		previous = "\n----------------------------------------------\nYour previous transaction was a withdrawl of $" + withdrawl + " from your account.\n----------------------------------------------";
+		main2();
+	}
+	public static void optionD() {   //previous transaction
+		System.out.println(previous);
+		main2();
+	}
+	public static void optionE() {   //exit
+		System.out.print("\n----------------------------------------------\nThank you for using this banking application! Have a great day!\n----------------------------------------------\n");
+	}
+	public static void options() {
+		System.out.print("\n----------------------------------------------\nA. Check balance\nB. Deposit\nC. Withdraw\nD. Previous Transaction\nE. Exit.\n\"options\" to view options again\n----------------------------------------------");
+
+	}
+}
